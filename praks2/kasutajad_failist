@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+nimi="kasutajad"
+parool="paroolid"
+	nimekiri=`paste -d: $nimi $parool`
+	for i in $nimekiri
+do
+	nimi=`echo $i | cut -d \: -f 1`
+	parool=`echo $i | cut -d \: -f 2`
+	sh ./useraddskript $nimi
+	echo $nimi:$parool | chpasswd
+ echo "Loodud kasutaja $nimi"
+done
